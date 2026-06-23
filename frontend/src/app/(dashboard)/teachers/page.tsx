@@ -293,7 +293,7 @@ export default function TeachersPage() {
                 <div key={f.key}>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{f.label}</label>
                   <input
-                    value={(form as Record<string, string | number | Record<string, boolean>>)[f.key] as string}
+                    value={(form as any)[f.key] as string}
                     onChange={e => setForm(prev => ({ ...prev, [f.key]: e.target.value }))}
                     placeholder={f.placeholder}
                     className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"

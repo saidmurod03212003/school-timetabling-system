@@ -7,6 +7,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useAuthStore } from '@/store/authStore'
 import { authApi } from '@/lib/api/auth'
 import { useState } from 'react'
+import { NotificationBell } from '@/components/notifications/NotificationBell'
 
 interface TopNavbarProps {
   onToggleSidebar: () => void
@@ -37,6 +38,9 @@ export function TopNavbar({ onToggleSidebar }: TopNavbarProps) {
 
       {/* Right side actions */}
       <div className="flex items-center gap-2">
+        {/* Notification bell */}
+        <NotificationBell />
+
         {/* Theme toggle */}
         <button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
