@@ -1,5 +1,5 @@
 # Build stage - Maven + Java 25
-FROM maven:3.9-eclipse-temurin-25-alpine AS builder
+FROM maven:3.9-eclipse-temurin-21-alpine AS builder
 WORKDIR /app
 COPY backend/pom.xml .
 RUN mvn dependency:go-offline -q
@@ -7,7 +7,7 @@ COPY backend/src ./src
 RUN mvn clean package -DskipTests -q
 
 # Runtime stage
-FROM eclipse-temurin:25-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 RUN addgroup -S timetable && adduser -S timetable -G timetable
