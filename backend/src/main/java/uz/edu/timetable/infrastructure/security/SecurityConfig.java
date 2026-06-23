@@ -80,12 +80,18 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of(
+        String frontendUrl = System.getenv("FRONTEND_URL");
+        List<String> origins = new java.util.ArrayList<>(List.of(
             "http://localhost:3000",
             "http://localhost:3001",
             "http://localhost:3002",
-            "https://timetable.school.uz"
+            "https://timetable.school.uz",
+            "https://frontend-jet-delta-56.vercel.app"
         ));
+        if (frontendUrl != null && !frontendUrl.isBlank()) {
+            origins.add(frontendUrl);
+        }
+        config.setAllowedOrigins(origins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Request-ID"));
         config.setAllowCredentials(true);
