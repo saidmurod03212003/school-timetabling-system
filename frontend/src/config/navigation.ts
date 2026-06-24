@@ -10,7 +10,6 @@ import {
   Settings,
   UserCircle,
   Shield,
-  BookMarked,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -46,11 +45,6 @@ export const navigation: NavItem[] = [
     href: '/curriculum',
     icon: BookText,
     permission: 'curriculum:manage',
-  },
-  {
-    title: 'Ochiq darslar',
-    href: '/open-lessons',
-    icon: BookMarked,
   },
   {
     title: 'Dars jadvali',
