@@ -72,11 +72,6 @@ export default function LoginPage() {
             Tizimga kirish
           </h2>
 
-          {/* Demo credentials hint */}
-          <div className="mb-5 px-3 py-2 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 rounded-lg text-xs text-indigo-700 dark:text-indigo-300">
-            <span className="font-semibold">Demo:</span> admin@timetable.uz / Admin1234!
-          </div>
-
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Email */}
             <div>

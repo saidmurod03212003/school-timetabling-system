@@ -2,6 +2,7 @@ package uz.edu.timetable.infrastructure.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,9 @@ public class DataInitializer implements ApplicationRunner {
     private final UserJpaRepository userRepository;
     private final RoleJpaRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Value("${ADMIN_PASSWORD:changeme-set-ADMIN_PASSWORD-env-var}")
+    private String adminPassword;
 
     @Override
     @Transactional
@@ -48,7 +52,7 @@ public class DataInitializer implements ApplicationRunner {
 
         UserJpaEntity admin = UserJpaEntity.builder()
                 .email(adminEmail)
-                .passwordHash(passwordEncoder.encode("Admin1234!"))
+                .passwordHash(passwordEncoder.encode(adminPassword))
                 .fullName("Super Administrator")
                 .isActive(true)
                 .isEmailVerified(true)
